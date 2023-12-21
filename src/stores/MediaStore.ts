@@ -31,7 +31,7 @@ export const useMediaStore = defineStore({
     currentSongIndex: 0, 
     currentTime: 0, 
     isPlaying: false, 
-    intervalId: null as NodeJS.Timer | null, 
+    intervalId: null as number | null, 
     searchQuery: '',
   }),
   getters: {
@@ -66,12 +66,12 @@ export const useMediaStore = defineStore({
           }
         }, 1000);
       } else {
-        clearInterval(this.intervalId as NodeJS.Timer);
+        clearInterval(this.intervalId as number);
       }
     },
 
     prevTrack() {
-      clearInterval(this.intervalId as NodeJS.Timer);
+      clearInterval(this.intervalId as number);
       this.currentTime = 0;
 
       this.currentSongIndex -= 1;
@@ -88,7 +88,7 @@ export const useMediaStore = defineStore({
     },
 
     nextTrack() {
-      clearInterval(this.intervalId as NodeJS.Timer);
+      clearInterval(this.intervalId as number);
       this.currentTime = 0;
 
       this.currentSongIndex += 1;
